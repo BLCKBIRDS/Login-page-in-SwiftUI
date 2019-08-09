@@ -55,7 +55,8 @@ struct ContentView : View {
                     .background(Color.green)
                     .cornerRadius(20.0)
                     .foregroundColor(.white)
-                    .animation(.basic(duration: 0.5, curve: .easeIn))
+                    //change
+                    .animation(Animation.default)
             }
         }
             .offset(y: editingMode ? -150 : 0)
@@ -95,7 +96,8 @@ struct LoginButtonContent : View {
     var body: some View {
         return Text("LOGIN")
             .font(.headline)
-            .color(.white)
+            //change
+            .foregroundColor(.white)
             .padding()
             .frame(width: 220, height: 60)
             .background(Color.green)
@@ -110,7 +112,7 @@ struct UsernameTextField : View {
     @Binding var editingMode: Bool
     
     var body: some View {
-        return TextField($username, placeholder: Text("Username"), onEditingChanged: {edit in
+        return TextField("Username", text: $username, onEditingChanged: {edit in
             if edit == true
             {self.editingMode = true}
             else
@@ -128,7 +130,7 @@ struct PasswordSecureField : View {
     @Binding var password: String
     
     var body: some View {
-        return SecureField($password, placeholder: Text("Password"))
+        return SecureField("Password", text: $password)
             .padding()
             .background(lightGreyColor)
             .cornerRadius(5.0)
